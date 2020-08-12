@@ -83,7 +83,7 @@ jobs:
           at: .
       - *restore-godel-cache
       - run: ./godelw dist
-      - run: ./godelw docker build --verbose
+      - run: ./godelw docker build --tag latest --verbose
       - deploy:
           name: Publish
           command: |
