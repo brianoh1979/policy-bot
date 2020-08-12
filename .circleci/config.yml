@@ -83,18 +83,7 @@ jobs:
           at: .
       - *restore-godel-cache
       - run: ./godelw dist
-      - run: ./godelw docker build --tag latest --verbose
-      - deploy:
-          name: Publish
-          command: |
-            if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
-              docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
-              docker push brianoh1979/bulldozer:latest
-            fi
-            if [[ -n "${CIRCLE_TAG}" ]] ; then
-              docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
-              docker push brianoh1979/bulldozer:tagname
-            fi
+      - run: ./godelw docker build --verbose
 
 ### Workflows ###
 
